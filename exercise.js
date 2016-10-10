@@ -8,25 +8,25 @@
 // \__,_/\__/_/_/_/\__/_/\___/____/
 
 // a simple "it" function for naming groups of expectations
-function it(description, contents){
-  console.log('\n\n"It '+ description + '"');
-  contents();
+function it(description, contents) {
+    console.log('\n\n"It ' + description + '"');
+    contents();
 }
 
 // A simple function for expecting values
 // Ex: expect(kepler.color).toBe('red'); // should return true
 function expect(target) {
-  return {
-    toBe: function(expectation) {
-      if (target === expectation) {
-        console.log('\n     %cPASSED', 'color:green;', 'Expected', target, 'to be', expectation );
-        return true;
-      } else {
-        console.log('\n     %cFAILED', 'color:red;', 'Expected', target, 'to be', expectation );
-        return false;
-      }
+    return {
+        toBe: function(expectation) {
+            if (target === expectation) {
+                console.log('\n     %cPASSED', 'color:green;', 'Expected', target, 'to be', expectation);
+                return true;
+            } else {
+                console.log('\n     %cFAILED', 'color:red;', 'Expected', target, 'to be', expectation);
+                return false;
+            }
+        }
     }
-  }
 }
 
 //                          __                  __
@@ -36,33 +36,33 @@ function expect(target) {
 // \___/\____/_/ /_/____/\__/_/   \__,_/\___/\__/\____/_/  /____/
 //
 // Only add code to *THIS* section!
-function Dog(param){
-  param = param || {};
-  this.status = 'normal';
-  this.color = param.color;
-  if(param.hungry == undefined){
-    this.hungry = true;
-  }else{
-    this.hungry = param.hungry;
-  }
-  if(param.owner !== undefined){
-    this.owner = param.owner;
-  }
+function Dog(param) {
+    param = param || {};
+    this.status = 'normal';
+    this.color = param.color;
+    if (param.hungry == undefined) {
+        this.hungry = true;
+    } else {
+        this.hungry = param.hungry;
+    }
+    if (param.owner !== undefined) {
+        this.owner = param.owner;
+    }
 
 }
 
-function Human(persona){
-  Human.prototype.pet = function(dog){
-    dog.status='happy';
-  };
-  Human.prototype.feed = function(dog){
-  dog.hungry = false;
-};
-  if(persona == undefined){
-    this.cool = false;
-  }else{
-    this.cool = persona.cool;
-  }
+function Human(persona) {
+    Human.prototype.pet = function(dog) {
+        dog.status = 'happy';
+    };
+    Human.prototype.feed = function(dog) {
+        dog.hungry = false;
+    };
+    if (persona == undefined) {
+        this.cool = false;
+    } else {
+        this.cool = persona.cool;
+    }
 
 }
 
@@ -79,12 +79,12 @@ function Human(persona){
 //            /____/
 
 var kepler = new Dog({
-  color: "red",
-  hungry: false
+    color: "red",
+    hungry: false
 });
 
 var moonshine = new Dog({
-  color: "blue-red"
+    color: "blue-red"
 });
 
 var atticus = new Dog();
@@ -99,7 +99,7 @@ var atticus = new Dog();
 var dan = new Human();
 
 var faith = new Human({
-  cool: true
+    cool: true
 });
 
 
@@ -112,35 +112,35 @@ var faith = new Human({
 // Don't edit this section. Instead make these tests pass by writing
 // constructors in the constructor section above ;D
 
-it("should make Kepler happy when Dan pets him", function(){
-  expect(kepler.status).toBe('normal');
-  dan.pet(kepler);
-  expect(kepler.status).toBe('happy');
+it("should make Kepler happy when Dan pets him", function() {
+    expect(kepler.status).toBe('normal');
+    dan.pet(kepler);
+    expect(kepler.status).toBe('happy');
 });
 
-it("should make Kepler red", function(){
-  expect(kepler.color).toBe('red');
+it("should make Kepler red", function() {
+    expect(kepler.color).toBe('red');
 });
 
-it("should be make Moonshine hungry and Kepler not hungry", function(){
-  expect(moonshine.hungry).toBe(true);
-  expect(kepler.hungry).toBe(false);
+it("should be make Moonshine hungry and Kepler not hungry", function() {
+    expect(moonshine.hungry).toBe(true);
+    expect(kepler.hungry).toBe(false);
 });
 
-it("should make Moonshine no longer hungry when you feed him", function(){
-  faith.feed(moonshine);
-  expect(moonshine.hungry).toBe(false);
+it("should make Moonshine no longer hungry when you feed him", function() {
+    faith.feed(moonshine);
+    expect(moonshine.hungry).toBe(false);
 });
 
 
-it("should not affect Atticus and Moonshine's owner properties when setting Dan as Kepler's owner ", function(){
-  kepler.owner = dan;
-  expect(moonshine.owner).toBe(undefined);
-  expect(atticus.owner).toBe(undefined);
+it("should not affect Atticus and Moonshine's owner properties when setting Dan as Kepler's owner ", function() {
+    kepler.owner = dan;
+    expect(moonshine.owner).toBe(undefined);
+    expect(atticus.owner).toBe(undefined);
 });
 
-it("should make Faith cool and Dan not cool", function(){
-  kepler.owner = dan;
-  expect(faith.cool).toBe(true);
-  expect(dan.cool).toBe(false);
+it("should make Faith cool and Dan not cool", function() {
+    kepler.owner = dan;
+    expect(faith.cool).toBe(true);
+    expect(dan.cool).toBe(false);
 });
